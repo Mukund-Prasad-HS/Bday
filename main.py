@@ -2,13 +2,14 @@ import random
 import streamlit as st
 from PIL import Image, ImageDraw
 import requests
+from pydub import AudioSegment
 from IPython.display import Audio
-
+import io
 def main():
     set_page_config()
 
-    st.title("Birthday Message App")
-    st.write("Click the button to display a Happy Birthday message!")
+
+    #st.title("Click the button to display a Happy Birthday message!")
 
     image_link = "https://drive.google.com/uc?export=view&id=1AV2QKF_4ktL6FZO3bH-_tHZDz5IurfQA"
 
@@ -24,12 +25,12 @@ def main():
         generate_confetti_animation()
         audio_link = "https://drive.google.com/uc?export=view&id=1AYE4fmXZs66HPxeDjT_371AL_RVYOvCe"
 
-        play_audio(audio_link)
+        st.audio(audio_link, format="audio/mp3")
 
 
 
 def set_page_config():
-    page_bg_color = "blue"
+    page_bg_color = "dark blue"
     page_fg_color = "#f8f9fa"
     page_css = f"""
         <style>
@@ -50,7 +51,14 @@ def generate_confetti_animation():
     draw = ImageDraw.Draw(canvas)
 
     random.seed(42)
-    colors = [(255, 215, 0), (255, 0, 0), (0, 128, 0), (0, 0, 255), (75, 0, 130), (238, 130, 238)]
+    colors = [
+        (255, 0, 0),  # Red
+        (0, 255, 0),  # Green
+        (0, 0, 255),  # Blue
+        (255, 215, 0),  # Gold
+        (128, 0, 128),  # Purple
+        (255, 165, 0),  # Orange
+    ]
     confetti_size_range = (5, 20)
     velocity_range = (1, 5)
     angular_velocity_range = (-5, 5)
@@ -79,11 +87,6 @@ def generate_confetti_animation():
 
     st.image(canvas, use_column_width=True)
     #pass
-def play_audio(audio_link):
-    audio_code = f"""
-    var audio = new Audio("{audio_link}");
-    audio.autoplay = true;
-    """
-    st.write(f'<script>{audio_code}</script>', unsafe_allow_html=True)
+
 if __name__ == '__main__':
     main()
