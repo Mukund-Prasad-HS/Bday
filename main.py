@@ -9,23 +9,27 @@ def main():
     set_page_config()
 
 
-    #st.title("Click the button to display a Happy Birthday message!")
+    st.title("👍👍")
 
     image_link = "https://drive.google.com/uc?export=view&id=1AV2QKF_4ktL6FZO3bH-_tHZDz5IurfQA"
 
     image = Image.open(requests.get(image_link, stream=True).raw)
     st.image(image, use_column_width=True)
 
-    if st.button("Click me!", key="birthday_button", help="Celebrate!"):
-        st.balloons()
-        st.markdown("<h1 style='text-align: center; color: #FF69B4;'>Happy Birthday!</h1>", unsafe_allow_html=True)
-        st.write("Wishing you a day filled with happiness and joy!")
-        st.write("May all your dreams and wishes come true. 🎉🎈🎂")
-
-        generate_confetti_animation()
-        audio_link = "https://drive.google.com/uc?export=view&id=1AYE4fmXZs66HPxeDjT_371AL_RVYOvCe"
+    if st.button("Celebrate!!!!!", key="birthday_button", help="Then, click on the play button!"):
+        for _ in range(4):
+            st.balloons()
+        audio_link = "https://drive.google.com/uc?export=view&id=1A_r-_Xd3eOUsKwTZXpO04BfmvpLEIgPW"
 
         st.audio(audio_link, format="audio/mp3")
+        st.markdown("<h1 style='text-align: center; color: #FF69B4;'>Happy Birthday!!!!!!!!!</h1>", unsafe_allow_html=True)
+
+        generate_confetti_animation()
+        st.markdown("<div style='text-align: center;'><p style='font-size: 24px;'>Wishing you a day filled with joy and laughter!!!!!!✨🌟</p></div>",
+            unsafe_allow_html=True)
+        st.markdown("<div style='text-align: center;'><p style='font-size: 24px;'>May this year be filled with success and exciting new ""branch"" adventures, Topper!!!!! 🎉🎈</p></div>",
+            unsafe_allow_html=True)
+
 
 
 
