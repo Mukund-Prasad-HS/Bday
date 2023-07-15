@@ -1,6 +1,8 @@
-import streamlit as st
-from PIL import Image, ImageDraw, ImageFont
 import random
+import streamlit as st
+from PIL import Image, ImageDraw
+import requests
+from IPython.display import Audio
 
 def main():
     set_page_config()
@@ -8,7 +10,9 @@ def main():
     st.title("Birthday Message App")
     st.write("Click the button to display a Happy Birthday message!")
 
-    image = Image.open(r"C:\Users\mukund\Downloads\OIP (3).jpeg")
+    image_link = "https://drive.google.com/uc?export=view&id=1AV2QKF_4ktL6FZO3bH-_tHZDz5IurfQA"
+
+    image = Image.open(requests.get(image_link, stream=True).raw)
     st.image(image, use_column_width=True)
 
     if st.button("Click me!", key="birthday_button", help="Celebrate!"):
@@ -18,16 +22,11 @@ def main():
         st.write("May all your dreams and wishes come true. 🎉🎈🎂")
 
         generate_confetti_animation()
+        audio_link = "https://drive.google.com/uc?export=view&id=1AYE4fmXZs66HPxeDjT_371AL_RVYOvCe"
 
-        st.write("---")
+        play_audio(audio_link)
 
-        st.audio(r"C:\Users\mukund\Downloads\bday new.mp3")
 
-        st.write("---")
-        st.subheader("Send a Birthday Message")
-        message = st.text_input("Type your birthday message here")
-        if st.button("Send"):
-            st.write(f"Your message: {message}")
 
 def set_page_config():
     page_bg_color = "blue"
@@ -79,6 +78,12 @@ def generate_confetti_animation():
                 break
 
     st.image(canvas, use_column_width=True)
-
+    #pass
+def play_audio(audio_link):
+    audio_code = f"""
+    var audio = new Audio("{audio_link}");
+    audio.autoplay = true;
+    """
+    st.write(f'<script>{audio_code}</script>', unsafe_allow_html=True)
 if __name__ == '__main__':
     main()
