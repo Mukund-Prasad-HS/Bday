@@ -35,7 +35,7 @@ def main():
 
 def set_page_config():
     page_bg_color = "dark blue"
-    page_fg_color = "blue"
+    page_fg_color = "#f8f9fa"
     page_css = f"""
         <style>
         .stApp {{
