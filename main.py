@@ -3,7 +3,7 @@ import streamlit as st
 from PIL import Image, ImageDraw
 import requests
 #from pydub import AudioSegment
-from IPython.display import Audio
+#from IPython.display import Audio
 import io
 def main():
     set_page_config()
