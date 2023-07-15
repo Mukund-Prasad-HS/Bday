@@ -15,8 +15,8 @@ def main():
 
     image = Image.open(requests.get(image_link, stream=True).raw)
     st.image(image, use_column_width=True)
-    st.markdown("<p style='font-size: 12px;'>"Remember to click the play button after clicking the celebrate button!!"</p>",
-            unsafe_allow_html=True)
+    st.markdown("<p style='font-size: 12px;'>Remember to click the play button after clicking the celebrate button!!</p>", unsafe_allow_html=True)
+
     
     if st.button("Celebrate!!!!!", key="birthday_button", help="Then, click on the play button!"):
         for _ in range(4):
